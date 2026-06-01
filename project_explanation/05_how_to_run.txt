@@ -1,0 +1,57 @@
+ЯК ЗАПУСТИТИ ПРОЄКТ З НУЛЯ
+
+1. Встановити PostgreSQL.
+
+2. Створити базу даних:
+
+CREATE DATABASE eventboard;
+
+3. Відкрити базу eventboard і виконати SQL з файлу:
+
+src/main/resources/schema.sql
+
+4. Відкрити проєкт в IntelliJ IDEA.
+
+5. Відкрити файл:
+
+src/main/java/com/eventboard/util/DatabaseUtil.java
+
+6. Поставити свій пароль PostgreSQL:
+
+private static final String PASSWORD = "твій пароль";
+
+7. Натиснути Maven Reload.
+
+В IntelliJ справа є вкладка Maven.
+Там треба натиснути Reload All Maven Projects.
+
+8. Налаштувати Tomcat 10.
+
+Run -> Edit Configurations -> + -> Tomcat Server -> Local
+
+У вкладці Deployment треба додати:
+
+EventBoard:war exploded
+
+Application context:
+
+/EventBoard
+
+9. Запустити Tomcat.
+
+10. Відкрити у браузері:
+
+http://localhost:8080/EventBoard/events
+
+Якщо відкрилася сторінка EventBoard, значить проєкт працює.
+
+Якщо 404:
+- перевірити, чи доданий EventBoard:war exploded
+- перевірити Application context
+- перевірити, що використовується Tomcat 10
+
+Якщо помилка підключення до бази:
+- перевірити, чи PostgreSQL запущений
+- перевірити назву бази eventboard
+- перевірити логін postgres
+- перевірити пароль у DatabaseUtil.java

@@ -1,0 +1,54 @@
+ПОЯСНЕННЯ ПРОЄКТУ EVENTBOARD
+
+Це простий Java Web проєкт для реєстрації студентів на заходи.
+
+У проєкті використовується:
+- Java
+- Maven
+- Tomcat 10
+- PostgreSQL
+- Servlet
+- JSP
+- JDBC
+- JUnit 5
+
+У проєкті НЕ використовується:
+- Spring
+- Hibernate
+- Mockito
+
+Структура папок:
+
+src/main/java/com/eventboard/model
+Тут знаходяться прості класи-об'єкти:
+- Event
+- Participant
+
+src/main/java/com/eventboard/repository
+Тут знаходяться класи, які працюють з базою даних через SQL:
+- EventRepository
+- ParticipantRepository
+
+src/main/java/com/eventboard/service
+Тут знаходиться бізнес-логіка:
+- EventService
+
+src/main/java/com/eventboard/servlet
+Тут знаходяться сервлети, тобто контролери:
+- EventsServlet
+- EventDetailsServlet
+
+src/main/java/com/eventboard/util
+Тут знаходиться клас для підключення до PostgreSQL:
+- DatabaseUtil
+
+src/main/webapp/views
+Тут знаходяться JSP сторінки:
+- events.jsp
+- event-details.jsp
+
+src/main/resources/schema.sql
+Тут знаходиться SQL для створення таблиць.
+
+src/test/java
+Тут знаходиться unit-тест для EventService.

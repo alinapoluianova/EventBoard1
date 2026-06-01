@@ -1,0 +1,50 @@
+БАЗА ДАНИХ
+
+У проєкті використовується PostgreSQL.
+
+Назва бази даних:
+
+eventboard
+
+Щоб створити базу, у pgAdmin або PostgreSQL Query Tool треба виконати:
+
+CREATE DATABASE eventboard;
+
+Після цього треба підключитися саме до бази eventboard і створити таблиці.
+
+У проєкті є 2 таблиці.
+
+1. events
+
+Ця таблиця зберігає заходи.
+
+Поля:
+- id - унікальний номер заходу
+- title - назва заходу
+- event_date - дата заходу
+- max_seats - максимальна кількість місць
+
+2. participants
+
+Ця таблиця зберігає студентів, які зареєструвалися на заходи.
+
+Поля:
+- id - унікальний номер учасника
+- event_id - id заходу
+- student_name - ім'я студента
+- student_email - пошта студента
+
+event_id є зовнішнім ключем.
+Він зв'язує учасника з конкретним заходом.
+
+SQL знаходиться у файлі:
+
+src/main/resources/schema.sql
+
+Підключення до бази знаходиться у файлі:
+
+src/main/java/com/eventboard/util/DatabaseUtil.java
+
+Там треба змінити пароль:
+
+private static final String PASSWORD = "your_password";

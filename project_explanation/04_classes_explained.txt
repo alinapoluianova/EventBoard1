@@ -1,0 +1,89 @@
+ПОЯСНЕННЯ КЛАСІВ
+
+Event.java
+
+Це модель заходу.
+Вона має поля:
+- id
+- title
+- eventDate
+- maxSeats
+- freeSeats
+
+freeSeats не зберігається в базі.
+Воно рахується в Java:
+
+freeSeats = maxSeats - кількість зареєстрованих учасників
+
+Participant.java
+
+Це модель учасника.
+Вона має поля:
+- id
+- eventId
+- studentName
+- studentEmail
+
+DatabaseUtil.java
+
+Цей клас створює підключення до PostgreSQL.
+У ньому є метод:
+
+getConnection()
+
+Його використовують repository-класи.
+
+EventRepository.java
+
+Цей клас працює з таблицею events.
+
+Основні методи:
+- findFutureEvents()
+- findById(int id)
+- save(Event event)
+- countParticipantsByEventId(int eventId)
+
+Усі SQL-запити зроблені через PreparedStatement.
+Це захищає від SQL Injection.
+
+ParticipantRepository.java
+
+Цей клас працює з таблицею participants.
+
+Основні методи:
+- findByEventId(int eventId)
+- save(Participant participant)
+
+EventService.java
+
+Це головний клас з бізнес-логікою.
+
+Він:
+- створює захід
+- отримує список заходів
+- отримує учасників
+- рахує вільні місця
+- не дозволяє реєстрацію, якщо місць немає
+
+EventsServlet.java
+
+Це контролер для сторінки /events.
+
+doGet() показує список заходів.
+doPost() додає новий захід.
+
+EventDetailsServlet.java
+
+Це контролер для сторінки /event.
+
+doGet() показує один захід.
+doPost() реєструє студента на захід.
+
+events.jsp
+
+Це сторінка зі списком заходів і формою створення заходу.
+
+event-details.jsp
+
+Це сторінка конкретного заходу.
+Тут видно учасників і форму реєстрації.
